@@ -1,0 +1,48 @@
+package com.smh.githubfollowercompose.data.remote.source
+
+import androidx.paging.ExperimentalPagingApi
+import androidx.paging.Pager
+import androidx.paging.PagingConfig
+import androidx.paging.PagingData
+import androidx.room.Room
+import androidx.test.core.app.ApplicationProvider
+import androidx.test.ext.junit.runners.AndroidJUnit4
+import com.smh.githubfollowercompose.data.local.GithubDatabase
+import com.smh.githubfollowercompose.data.remote.api.FakeApiImpl
+import com.smh.githubfollowercompose.data.remote.api.GitHubApi
+import com.smh.githubfollowercompose.data.remote.source.pagingsource.FollowersRemoteMediator
+import com.smh.githubfollowercompose.domain.model.local.FollowerEntity
+import com.smh.githubfollowercompose.domain.model.remote.FollowerDetailApiModel
+import com.smh.githubfollowercompose.domain.repository.RemoteDataSource
+import com.smh.githubfollowercompose.utility.ResponseData
+import kotlinx.coroutines.flow.Flow
+import org.junit.runner.RunWith
+
+class FakeRemoteDataSourceImpl : RemoteDataSource {
+    private val api: GitHubApi = FakeApiImpl()
+
+    override fun getFollowers(
+        username: String,
+        searchFollower: String
+    ): Flow<PagingData<FollowerEntity>> {
+        TODO()
+    }
+
+    override suspend fun getFollowerDetail(username: String): ResponseData<FollowerDetailApiModel> {
+        try {
+            val data = api.getFollowerDetail(username)
+            when (data.code()) {
+                200 -> {
+                    data.body()?.let {
+                        return ResponseData.Success(data = it)
+                    }
+                    return ResponseData.Failed(200,"This user has any data to show.")
+                }
+                else -> return ResponseData.Failed(status = data.code(), message = data.message())
+            }
+        }
+        catch (e : Exception) {
+            return ResponseData.Exception(e)
+        }
+    }
+}

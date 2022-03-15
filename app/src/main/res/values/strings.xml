@@ -1,0 +1,25 @@
+<resources>
+    <string name="app_name">GHFollower</string>
+    <string name="deleteFavourite">Delete Favourite</string>
+    <string name="favouriteImage">FavouriteImage</string>
+    <string name="forwardArrow">ForwardArrow</string>
+    <string name="favourites">Favourites</string>
+    <string name="noFavourite">No Favourite</string>
+    <string name="deleteSnackFavourite">Delete %s</string>
+    <string name="followerImage">FollowerImage</string>
+    <string name="retryIcon">RetryIcon</string>
+    <string name="topToRetry">Tap to retry</string>
+    <string name="done">Done</string>
+    <string name="failIcon">FailIcon</string>
+    <string name="connectionSlowIcon">ConnectionSlowIcon</string>
+    <string name="conSlowToFetch">Connection slow to fetch data</string>
+    <string name="noConnection">No internet connection</string>
+    <string name="addFavourite">Add Favourite</string>
+    <string name="githubLogo">GithubLogo</string>
+    <string name="github">Github</string>
+    <string name="followers">Followers</string>
+    <string name="getFollowers">Get Followers</string>
+    <string name="searchBarIcon">SearchBottomBarIcon</string>
+    <string name="favBarIcon">FavouriteBottomBarIcon</string>
+    <string name="search">Search</string>
+</resources>
